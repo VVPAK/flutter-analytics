@@ -24,14 +24,14 @@ jobs:
 
   package_analysis:
     runs-on: ubuntu-latest
-      steps:
-        - name: Checkout 🛎️
-          uses: actions/checkout@v2
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
 
-        - name: Run package analyzer 🔍
-          uses: axel-op/dart-package-analyzer@v3
-          with:
-            githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run package analyzer 🔍
+        uses: axel-op/dart-package-analyzer@v3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   code_analysis:
     runs-on: ubuntu-latest
