@@ -24,6 +24,12 @@ jobs:
 
       - name: Check Description
         run: echo | grep -q Description README.md ; echo $?
+
+      - name: Check Example
+        run: echo | grep -q Example README.md ; echo $?
+
+      - name: Check Installation
+        run: echo | grep -q Installation README.md ; echo $?
 #
 #  package_analysis:
 #    runs-on: ubuntu-latest
