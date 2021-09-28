@@ -49,9 +49,9 @@ jobs:
         run: flutter format --set-exit-if-changed .
 
       - name: Run test ⚙️
-          run: |
-            flutter test --coverage
-            mv coverage/lcov.info coverage/lcov.base.info
+        run: |
+          flutter test --coverage
+          mv coverage/lcov.info coverage/lcov.base.info
 
       - name: Report code coverage ⚙️
           uses: zgosalvez/github-actions-report-lcov@v1
