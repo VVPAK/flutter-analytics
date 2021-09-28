@@ -30,71 +30,71 @@ jobs:
 
       - name: Check Installation
         run: echo | grep -q Installation README.md ; echo $?
-#
-#  package_analysis:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout 🛎️
-#        uses: actions/checkout@v2
-#
-#      - name: Run package analyzer 🔍
-#        uses: axel-op/dart-package-analyzer@v3
-#        with:
-#          githubToken: ${{ secrets.GITHUB_TOKEN }}
-#
-#  code_analysis:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout 🛎️
-#        uses: actions/checkout@v2
-#
-#      - name: Install Flutter 🔧
-#        uses: subosito/flutter-action@v1
-#        with:
-#          channel: "stable"
-#
-#      - name: Install dependencies 🔧
-#        run: flutter pub get
-#
-#      - name: Run dependency validator 🔍
-#        run: |
-#          dart pub global activate dependency_validator
-#          dart pub global run dependency_validator:dependency_validator
-#
-#      - name: Run analyzer 🔍
-#        run: flutter analyze --fatal-warnings --fatal-infos .
-#
-#      - name: Run formatter ⚙️
-#        run: flutter format --set-exit-if-changed .
-#
-#      - name: Run test ⚙️
-#        run: |
-#          flutter test --coverage
-#          mv coverage/lcov.info coverage/lcov.base.info
-#
-#      - name: Report code coverage ⚙️
-#        uses: zgosalvez/github-actions-report-lcov@v1
-#        with:
-#          coverage-files: coverage/lcov.*.info
-#          minimum-coverage: 70
-#          artifact-name: code-coverage-report
-#          github-token: ${{ secrets.GITHUB_TOKEN }}
-#
-#  build_android_example:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout 🛎️
-#        uses: actions/checkout@v2
-#
-#      - name: Install Flutter 🔧
-#        uses: subosito/flutter-action@v1
-#        with:
-#          channel: "stable"
-#
-#      - name: Build
-#        run: |
-#          cd example
-#          flutter pub get
-#          flutter build apk
+
+  package_analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Run package analyzer 🔍
+        uses: axel-op/dart-package-analyzer@v3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  code_analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Install Flutter 🔧
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Install dependencies 🔧
+        run: flutter pub get
+
+      - name: Run dependency validator 🔍
+        run: |
+          dart pub global activate dependency_validator
+          dart pub global run dependency_validator:dependency_validator
+
+      - name: Run analyzer 🔍
+        run: flutter analyze --fatal-warnings --fatal-infos .
+
+      - name: Run formatter ⚙️
+        run: flutter format --set-exit-if-changed .
+
+      - name: Run test ⚙️
+        run: |
+          flutter test --coverage
+          mv coverage/lcov.info coverage/lcov.base.info
+
+      - name: Report code coverage ⚙️
+        uses: zgosalvez/github-actions-report-lcov@v1
+        with:
+          coverage-files: coverage/lcov.*.info
+          minimum-coverage: 70
+          artifact-name: code-coverage-report
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  build_android_example:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Install Flutter 🔧
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Build
+        run: |
+          cd example
+          flutter pub get
+          flutter build apk
