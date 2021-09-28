@@ -6,13 +6,13 @@ on:
       - main
 
 jobs:
-  file_existence:
+  content_requirements:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout 🛎️
         uses: actions/checkout@v1
 
-      - name: Check file existence
+      - name: Content requirements
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
@@ -20,10 +20,9 @@ jobs:
 
       - name: File exists
         if: steps.check_files.outputs.files_exists == 'true'
-        # Only runs if all of the files exists
-        run: echo All files exists!
+        run: echo Content is ok!
 
-  build:
+  code_analysis:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,17 +48,20 @@ jobs:
       - name: Run formatter ⚙️
         run: flutter format --set-exit-if-changed .
 
-      - name: Run tests ⚙️
-        run: flutter test
+      - name: Run test ⚙️
+          run: |
+            flutter test --coverage
+            mv coverage/lcov.info coverage/lcov.base.info
 
-  package-analysis:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
+      - name: Report code coverage ⚙️
+          uses: zgosalvez/github-actions-report-lcov@v1
+          with:
+            coverage-files: coverage/lcov.*.info
+            minimum-coverage: 90
+            artifact-name: code-coverage-report
+            github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run package analyzer 🔍
-        uses: axel-op/dart-package-analyzer@v3
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          uses: axel-op/dart-package-analyzer@v3
+          with:
+            githubToken: ${{ secrets.GITHUB_TOKEN }}
