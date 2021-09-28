@@ -9,7 +9,7 @@ jobs:
   file_existence:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout 🛎️
         uses: actions/checkout@v1
 
       - name: Content requirements
@@ -20,7 +20,7 @@ jobs:
 
       - name: File exists
         if: steps.check_files.outputs.files_exists == 'true'
-        run: Content is ok!
+        run: echo Content is ok!
 
   test:
     runs-on: ubuntu-latest
