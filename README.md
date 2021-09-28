@@ -9,7 +9,7 @@
 
 This package is part of the [SurfGear](https://github.com/surfstudio/SurfGear) toolkit made by [Surf](https://surf.ru).
 
-## Description
+
 
 Interface for working with analytic services.  
 The library is supposed to unify work with various analytic services. The main actors are:
