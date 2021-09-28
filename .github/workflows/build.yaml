@@ -23,7 +23,7 @@ jobs:
         run: echo Content is ok!
 
       - name: Check Description
-        run: echo "REAMDE.md" | grep -q Description ; echo $?
+        run: echo "README.md" | grep -q Description ; echo $?
 #
 #  package_analysis:
 #    runs-on: ubuntu-latest
