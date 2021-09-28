@@ -48,10 +48,7 @@ jobs:
       - name: Run formatter ⚙️
         run: flutter format --set-exit-if-changed .
 
-      - name: Run tests ⚙️
-        run: flutter test
-
-      - name: Run test coverage ⚙️
+      - name: Run test ⚙️
           run: |
             flutter test --coverage
             mv coverage/lcov.info coverage/lcov.base.info
